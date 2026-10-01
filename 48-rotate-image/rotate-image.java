@@ -1,29 +1,30 @@
 class Solution {
+    public static void swap(int a[][],int i,int j ){
+        int temp=a[i][j];
+        a[i][j]=a[j][i];
+        a[j][i]=temp;
+    }
+
+    public static void swap(int a[], int i, int j) {
+    int temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
+    }
+
     public void rotate(int[][] matrix) {
-        int[][] ans = new int[matrix.length][matrix[0].length];
-        int n=matrix.length;
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                ans[j][n-i-1]=matrix[i][j];
+        int m=matrix.length;
+        int n=matrix[0].length;
+        for(int i=0;i<m;i++){
+            for(int j=i+1;j<n;j++){
+                swap(matrix,i,j);
             }
         }
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
 
-        for(int i=0;i<ans.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                matrix[i][j]=ans[i][j];
+        for(int i=0;i<m;i++){
+            int p=n-1;
+            for(int j=0;j<n/2;j++){
+                swap(matrix[i],j,p--);
             }
         }
-        
-        for(int i=0;i<matrix.length;i++){
-            ArrayList<Integer> sc = new ArrayList<>();
-
-            for(int j=0;j<matrix[0].length;j++){
-                sc.add(matrix[i][j]);
-            }
-            res.add(sc);
-        }
-
-        System.out.println(res);
     }
 }
