@@ -1,25 +1,40 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        Set<List<Integer>> remDup = new HashSet<>();
+        List<List<Integer>> ans= new ArrayList<>();
+      
         int n=nums.length;
+
         for(int i=0;i<n;i++){
-            Set<Integer> store = new HashSet<>();
-            for(int j=i+1;j<n;j++){
-                int third=-(nums[i]+nums[j]);
-                List<Integer> sc = new ArrayList<>();
-                if(store.contains(third)){
+            if(i>0&&nums[i]==nums[i-1]) continue;
+            int j=i+1;
+            int k=n-1;
+
+            while(j<k){
+                int sum=nums[i]+nums[j]+nums[k];
+                if(sum<0){
+                    j++;
+                }
+                else if(sum>0){
+                    k--;
+                }
+                else{
+                    List<Integer> sc = new ArrayList<>();
                     sc.add(nums[i]);
                     sc.add(nums[j]);
-                    sc.add(third);
-                   
-                    remDup.add(sc);
+                    sc.add(nums[k]);
+                    ans.add(sc);
+                    j++;
+                    k--;
+                    while(j<k && nums[j]==nums[j-1]) {
+                        j++;
+                        }
+                    while(j<k && nums[k]==nums[k+1]){
+                        k--;
+                        }
                 }
-                store.add(nums[j]);
             }
         }
-        
-        return new ArrayList<>(remDup);
+        return ans;
     }
 }
-
