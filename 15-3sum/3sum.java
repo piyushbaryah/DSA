@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
         Set<List<Integer>> remDup = new HashSet<>();
         int n=nums.length;
         for(int i=0;i<n;i++){
@@ -12,13 +12,14 @@ class Solution {
                     sc.add(nums[i]);
                     sc.add(nums[j]);
                     sc.add(third);
-                    Collections.sort(sc);
+                   
                     remDup.add(sc);
                 }
                 store.add(nums[j]);
             }
         }
-        result.addAll(remDup);
-        return result;
+        
+        return new ArrayList<>(remDup);
     }
 }
+
