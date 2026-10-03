@@ -1,4 +1,3 @@
-import java.util.*;
 class Solution {
     public int maxSubArray(int[] nums) {
         int n=nums.length;
@@ -6,7 +5,9 @@ class Solution {
         int sum=0;
         for(int i=0;i<n;i++){
             sum+=nums[i];
-            maxSum=Math.max(sum,maxSum);
+            if(sum>maxSum){
+                maxSum=sum;
+            }
 
             if(sum<0){
                 sum=0;
