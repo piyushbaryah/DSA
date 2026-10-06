@@ -16,6 +16,7 @@ class Solution {
                         sc.add(nums[j]);
                         sc.add(nums[k]);
                         sc.add((int)fourth);
+                        Collections.sort(sc);
                         ans.add(sc);
                     }
                     el.add(nums[k]);
