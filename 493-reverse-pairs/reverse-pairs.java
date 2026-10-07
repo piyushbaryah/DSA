@@ -39,6 +39,7 @@ class Solution {
                 cnt+=(right-(mid+1));
         }
         return cnt;
+        
     }
     public static int mS(int[] nums,int low,int high){
         int cnt=0;
