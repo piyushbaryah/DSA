@@ -11,7 +11,8 @@ class Solution {
     public int sumof(int[] nums,int mid){
         int sum=0;
         for(int i: nums){
-            int num=(int)Math.ceil((double)i/(double)mid);
+            // int num=(int)Math.ceil((double)i/(double)mid);
+            int num=(i+mid-1)/mid;
             sum+=num;
 
         }
