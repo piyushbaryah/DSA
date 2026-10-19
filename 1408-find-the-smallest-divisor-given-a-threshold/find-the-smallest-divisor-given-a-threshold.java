@@ -24,7 +24,9 @@ class Solution {
         int res=0;
 
         while(low<=high){
-            int mid=(low+high)/2;
+            // int mid=(low+high)/2;
+            int mid = low + (high - low) / 2;
+
             if(sumof(nums,mid)<=threshold){
                 res=mid;
                 high=mid-1;
