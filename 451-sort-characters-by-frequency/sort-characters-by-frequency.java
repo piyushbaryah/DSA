@@ -10,29 +10,22 @@ class Solution {
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
-        String ans = "";
+        // Sort characters by frequency
+        List<Character> list = new ArrayList<>(map.keySet());
 
-        while(!map.isEmpty()) {
+        Collections.sort(list, (a, b) -> map.get(b) - map.get(a));
 
-            char maxChar = ' ';
-            int maxFreq = 0;
+        // Build answer
+        StringBuilder ans = new StringBuilder();
 
-            // Find character with highest frequency
-            for(char ch : map.keySet()) {
-                if(map.get(ch) > maxFreq) {
-                    maxFreq = map.get(ch);
-                    maxChar = ch;
-                }
+        for(char ch : list) {
+            int freq = map.get(ch);
+
+            for(int i = 0; i < freq; i++) {
+                ans.append(ch);
             }
-
-            // Add character according to frequency
-            for(int i = 0; i < maxFreq; i++) {
-                ans += maxChar;
-            }
-
-            map.remove(maxChar);
         }
 
-        return ans;
+        return ans.toString();
     }
 }
